@@ -58,7 +58,7 @@
                         <p class="text-gray-600 text-sm">{{ Str::limit($product->description, 50) }}</p>
                         <p class="text-lg font-semibold text-blue-600 mt-2">Rs.{{ $product->price }}</p>
                         <button class="mt-3 w-full bg-blue-500 text-white py-1 rounded hover:bg-blue-600">
-                            Purchase
+                            Add to Cart
                         </button>
                     </div>
                 @empty

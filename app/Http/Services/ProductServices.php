@@ -34,6 +34,7 @@ class ProductServices{
             $product->stock = $request->stock;
             $product->image = $image_name;
             $product->category_id = $request->category_id;
+            $product->status = $request->status;
 
 
             $product->save();
@@ -72,6 +73,7 @@ class ProductServices{
             $product->description = $request->description;
             $product->stock = $request->stock;
             $product->category_id = $request->category_id;
+            $product->status = $request->status;
             $product->save();
 
         }catch(\Exception $e){

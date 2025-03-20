@@ -34,4 +34,8 @@ class Product extends Model
     public function reviews(){
         return $this->hasMany(Review::class);
     }
+
+    public static function active(){
+        return self::where('status', 'active')->get();
+    }
 }

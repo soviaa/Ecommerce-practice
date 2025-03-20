@@ -41,6 +41,17 @@
                     @endforeach
                 </select>
             </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-1">Status</label>
+                <div class="flex items-center">
+                    <label class="mr-4">
+                        <input type="radio" name="status" value="active" checked> Active
+                    </label>
+                    <label>
+                        <input type="radio" name="status" value="inactive"> Inactive
+                    </label>
+                </div>
+            </div>
             <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Submit</button>
         </form>
     </div>

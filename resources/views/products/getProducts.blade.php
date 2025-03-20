@@ -46,6 +46,7 @@
                                 <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Price</th>
                                 <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Stock</th>
                                 <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Category</th>
+                                <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Status</th>
                                 <th class="px-4 py-2 text-left text-sm font-medium text-gray-600">Actions</th>
                             </tr>
                         </thead>
@@ -60,6 +61,13 @@
                                     <td class="px-4 py-2">{{ number_format($product->price, 2) }}</td>
                                     <td class="px-4 py-2">{{ $product->stock }}</td>
                                     <td class="px-4 py-2">{{ $product->category->name }}</td>
+                                    <td class="px-4 py-2">
+                                        @if ($product->status == 'active')
+                                            <span class="bg-green-500 text-white px-2 py-1 rounded-full">Active</span>
+                                        @else
+                                            <span class="bg-red-500 text-white px-2 py-1 rounded-full">Inactive</span>
+                                        @endif
+                                    </td>
                                     <td class="px-4 py-2">
                                         <a href="{{ route('product.edit', $product->id) }}" class="text-blue-500 hover:text-blue-700 mr-2">Edit</a>
                                         <form action="{{ route('product.delete', $product->id) }}" method="POST" class="inline">

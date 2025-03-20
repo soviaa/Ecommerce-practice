@@ -7,7 +7,6 @@ class CategoryServices
 {
     public function category()
     {
-    
         return view('category');
     }
     public function addCategory($request)
