@@ -17,8 +17,8 @@ class RoleCheckMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user() && $request->user()->role !== 'admin') {
-            
-            return response()->json(['message' => 'You are not authorized to access this route'], 403);
+
+            abort(404);
         }
         return $next($request);
     }

@@ -38,4 +38,8 @@ class ProductController extends Controller
     {
         return $this->product->deleteProduct($id);
     }
+    public function show($id)
+    {
+        return $this->product->show($id);
+    }
 }

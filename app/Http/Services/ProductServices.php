@@ -21,7 +21,7 @@ class ProductServices{
     public function addProduct($request){
         try{
             DB::beginTransaction();
-      
+
             if($request ->hasFile('image')){
                 $image = $request->file('image');
                 $image_name = time().'.'.$image->getClientOriginalExtension();
@@ -88,4 +88,15 @@ class ProductServices{
         $product->delete();
         return redirect()->route('products');
     }
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        $relatedProducts = Product::where('category_id', $product->category_id)
+                                ->where('id', '!=', $id)
+                                ->take(4)
+                                ->get();
+        return view('products.singleProduct', compact('product', 'relatedProducts'));
+    }
 }
+
