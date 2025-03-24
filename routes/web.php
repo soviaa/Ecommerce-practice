@@ -35,6 +35,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/product/edit/{id}', [ProductController::class, 'editProduct'])->name('product.edit');
         Route::post('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('product.update');
         Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct'])->name('product.delete');
+
+
+        Route::get('/carousel', [HomeController::class, 'showCarousel'])->name('carousel');
+        Route::get('/carousel/add', [HomeController::class, 'addCarousel'])->name('carousel.add');
+        Route::post('/carousel/add', [HomeController::class, 'storeCarousel'])->name('carousel.store');
+        Route::delete('/carousel/delete/{id}',[HomeController::class, 'destroy'])->name('carousel.destroy');
     });
 });
 

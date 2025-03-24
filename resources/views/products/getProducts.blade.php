@@ -18,6 +18,7 @@
                 <a href="/dashboard" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Dashboard</a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Categories</a>
                 <a href="{{ route('products') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Products</a>
+                <a href="{{ route('carousel.add') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">Carousel</a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-red-600">Logout</a>
             </nav>
         </aside>

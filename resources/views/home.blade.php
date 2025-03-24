@@ -13,31 +13,25 @@
     @include('layouts.navbar')
 
     {{-- Hero Section with Carousel --}}
-    <div class="relative w-full max-w-5xl mx-auto mt-6" x-data="{ currentSlide: 1 }">
+    <div class="relative w-full max-w-5xl mx-auto mt-6" x-data="{ currentSlide: 1, totalSlides: {{ $carousels->count() }} }">
         <div class="relative h-64 overflow-hidden rounded-lg">
-            <!-- Slides -->
-            <div class="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                x-show="currentSlide === 1">
-                <img src="https://source.unsplash.com/900x400/?food" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                x-show="currentSlide === 2">
-                <img src="https://source.unsplash.com/900x400/?cooking" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                x-show="currentSlide === 3">
-                <img src="https://source.unsplash.com/900x400/?restaurant" class="w-full h-full object-cover">
-            </div>
+            @foreach($carousels as $index => $carousel)
+                <div class="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                    x-show="currentSlide === {{ $index + 1 }}">
+                    <img src="{{ asset('storage/carousels/' . $carousel->image) }}" class="w-full h-full object-cover" alt="{{ $carousel->title }}">
+                </div>
+            @endforeach
         </div>
 
         <!-- Controls -->
         <div class="absolute inset-0 flex items-center justify-between px-4">
-            <button @click="currentSlide = currentSlide === 1 ? 3 : currentSlide - 1"
+            <button @click="currentSlide = currentSlide === 1 ? totalSlides : currentSlide - 1"
                 class="bg-gray-800 text-white px-2 py-1 rounded-full">❮</button>
-            <button @click="currentSlide = currentSlide === 3 ? 1 : currentSlide + 1"
+            <button @click="currentSlide = currentSlide === totalSlides ? 1 : currentSlide + 1"
                 class="bg-gray-800 text-white px-2 py-1 rounded-full">❯</button>
         </div>
     </div>
+
 
     {{-- Product Section --}}
     <div class="max-w-7xl mx-auto py-10 px-4">
