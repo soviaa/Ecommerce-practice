@@ -17,9 +17,10 @@ class ReviewController extends Controller
     {
         return $this->review->store($request, $productId);
     }
-    public function averageRating($productId){
-        return $this->review->averageRating($productId);
-    }
+    // public function averageRating($productId)
+    // {
+    //     return $this->review->averageRating($productId);
+    // }
 
     // public function index($productId)
     // {
@@ -28,5 +29,3 @@ class ReviewController extends Controller
     //     return view('products.show', compact('product'));
     // }
 }
-
-

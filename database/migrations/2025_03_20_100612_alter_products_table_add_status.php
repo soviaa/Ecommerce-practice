@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function(Blueprint $table){
-            $table->enum('status', ['active', 'inactive'])->default('active')->after('category_id');
-        });
+        if (!Schema::hasColumn('products', 'status')) {
+
+            Schema::table('products', function (Blueprint $table) {
+                $table->enum('status', ['active', 'inactive'])->default('active')->after('category_id');
+            });
+        }
     }
 
     /**
@@ -21,6 +24,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        if (Schema::hasColumn('products', 'status')) {
+            Schema::table('products', function (Blueprint $table) {
+                $table->dropColumn('status');
+            });
+        }
     }
 };

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Controller;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,11 +41,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/carousel', [HomeController::class, 'showCarousel'])->name('carousel');
         Route::get('/carousel/add', [HomeController::class, 'addCarousel'])->name('carousel.add');
         Route::post('/carousel/add', [HomeController::class, 'storeCarousel'])->name('carousel.store');
-        Route::delete('/carousel/delete/{id}',[HomeController::class, 'destroy'])->name('carousel.destroy');
+        Route::delete('/carousel/delete/{id}', [HomeController::class, 'destroy'])->name('carousel.destroy');
     });
 });
 
 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

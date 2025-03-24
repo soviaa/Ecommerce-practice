@@ -42,4 +42,6 @@ class ProductController extends Controller
     {
         return $this->product->show($id);
     }
+
+    
 }

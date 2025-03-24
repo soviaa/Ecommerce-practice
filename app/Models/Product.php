@@ -9,7 +9,7 @@ use App\Models\Review;
 
 class Product extends Model
 {
-    protected $fillable =[
+    protected $fillable = [
         'name',
         'price',
         'description',
@@ -17,7 +17,7 @@ class Product extends Model
         'stock',
         'category_id'
     ];
-    protected $appends= ['image_path'];
+    protected $appends = ['image_path'];
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -25,17 +25,23 @@ class Product extends Model
 
     public function getImagePathAttribute()
     {
-        if($this->image == null){
+        if ($this->image == null) {
             return null;
         }
-        return asset('storage/products/'.$this->image);
+        return asset('storage/products/' . $this->image);
     }
 
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
     }
 
-    public static function active(){
+    public static function active()
+    {
         return self::where('status', 'active')->get();
+    }
+    public static function inactive()
+    {
+        return self::where('status', 'inactive')->get();
     }
 }
