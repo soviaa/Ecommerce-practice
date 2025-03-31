@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,10 +43,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/carousel/add', [HomeController::class, 'addCarousel'])->name('carousel.add');
         Route::post('/carousel/add', [HomeController::class, 'storeCarousel'])->name('carousel.store');
         Route::delete('/carousel/delete/{id}', [HomeController::class, 'destroy'])->name('carousel.destroy');
+
+        Route::post('/send-mail', [AdminController::class, 'sendMail'])->name('send.mail');
     });
 });
 
 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
+Route::get('/palindrome/{number}',[Controller::class,'isPalindrome']);
+Route::get('/length/{word}',[Controller::class,'length']);
+Route::get('/domain',[Controller::class,'checkDomain']);
+
+
+
+
+
 
 require __DIR__ . '/auth.php';
