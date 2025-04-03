@@ -17,7 +17,9 @@
         <div class="relative h-64 overflow-hidden rounded-lg">
             @foreach($carousels as $index => $carousel)
                 <div class="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                    x-show="currentSlide === {{ $index + 1 }}">
+                    x-show="currentSlide === {{ $index + 1 }}"
+                    x-transition:enter="transition-opacity duration-700 ease-in-out"
+                    x-transition:leave="transition-opacity duration-700 ease-in-out">
                     <img src="{{ asset('storage/carousels/' . $carousel->image) }}" class="w-full h-full object-cover" alt="{{ $carousel->title }}">
                 </div>
             @endforeach
@@ -31,6 +33,8 @@
                 class="bg-gray-800 text-white px-2 py-1 rounded-full">❯</button>
         </div>
     </div>
+
+
 
 
     {{-- Product Section --}}

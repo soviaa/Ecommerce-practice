@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Review;
 
 class User extends Authenticatable
@@ -33,6 +33,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -48,8 +50,20 @@ class User extends Authenticatable
         ];
     }
 
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
+
+    public function roles() : BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    // public function hasRole($role)
+    // {
+    //     dd($this->roles()->where('slug', $role)->exists());
+    //     return $this->roles()->where('slug', $role)->exists();
+    // }
 }

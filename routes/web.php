@@ -51,9 +51,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
-Route::get('/palindrome/{number}',[Controller::class,'isPalindrome']);
-Route::get('/length/{word}',[Controller::class,'length']);
-Route::get('/domain',[Controller::class,'checkDomain']);
+// Route::get('/palindrome/{number}',[Controller::class,'isPalindrome']);
+// Route::get('/length/{word}',[Controller::class,'length']);
+// Route::get('/domain',[Controller::class,'checkDomain']);
+
+
+Route::get('/user/{user}/role/{role}',[AdminController::class,'assignRole'])->name('user.role');
 
 
 

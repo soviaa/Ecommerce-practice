@@ -15,7 +15,7 @@
         <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; background-color: #f9fafb; margin-bottom: 16px;">
             <h3 style="font-size: 18px; font-weight: 600; color: #374151;">Your Reviewed Product</h3>
             <div style="display: flex; align-items: center; margin-top: 12px;">
-                <img src="{{ $product->image_path }}" alt="Product Image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                <img src="{{ $message->embed($image_path) }}" alt="Product Image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
                 <div style="margin-left: 16px;">
                     <h4 style="font-size: 16px; font-weight: 500; color: #1f2937;">{{ $product->name }}</h4>
                     <p style="color: #6b7280; font-size: 14px;">{{ $product->description }}</p>

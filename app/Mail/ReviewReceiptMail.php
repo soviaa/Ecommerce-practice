@@ -55,6 +55,8 @@ class ReviewReceiptMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            
+        ];
     }
 }
