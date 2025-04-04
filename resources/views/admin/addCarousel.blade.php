@@ -6,6 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100">
+   
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
         <h2 class="text-xl font-semibold mb-4">Add Image to Carousel</h2>
         <form action="{{ route('carousel.store') }}" method="POST" enctype="multipart/form-data">

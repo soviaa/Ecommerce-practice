@@ -8,12 +8,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Review;
-
+use App\Models\Role;
+use Laravel\Jetstream\HasRoles;
+/**
+ * @method bool hasRole(string $role)
+ * @property \Illuminate\Database\Eloquent\Collection $roles
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -40,6 +44,7 @@ class User extends Authenticatable
     /**
      * Get the attributes that should be cast.
      *
+     *
      * @return array<string, string>
      */
     protected function casts(): array
@@ -61,9 +66,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    // public function hasRole($role)
-    // {
-    //     dd($this->roles()->where('slug', $role)->exists());
-    //     return $this->roles()->where('slug', $role)->exists();
-    // }
+    public function hasRole($role) : Bool
+    {
+        return $this->roles()->where('slug', $role)->exists();
+    }
 }

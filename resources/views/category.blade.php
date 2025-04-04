@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex justify-center items-center h-screen">
+    @include('layouts.sidebar')
 
     <div class="bg-white p-6 rounded-lg shadow-md w-96">
         <h2 class="text-2xl font-bold mb-4 text-center">Add Category</h2>

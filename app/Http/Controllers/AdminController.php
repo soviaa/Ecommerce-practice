@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ReviewMailDispatchJob;
 use App\Models\Review;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ReviewReceiptMail;
 use App\Models\User;
 use App\Models\Role;
-
-
+use App\Models\Permission;
 
 class AdminController extends Controller
 {
@@ -29,12 +26,22 @@ class AdminController extends Controller
 
     public function assignRole(User $user, Role $role)
     {
-       
-        $user->roles()->attach($role);
-        return response()->json([
-            'message' => 'Role assigned successfully',
-            'user' => $user,
-            'role' => $role,
+        $user->roles()->sync($role);
+
+        return redirect()->back()->with('success', 'Role assigned successfully!');
+    }
+
+    public function getUsers()
+    {
+        $users = User::with('roles')->get();
+        return view('admin.userList', compact('users'), [
+            'roles' => Role::all(),
         ]);
+    }
+    public function assignPermission(User $user, Permission $permission)
+    {
+        $user->permissions()->sync($permission);
+
+        return redirect()->back()->with('success', 'Permission assigned successfully!');
     }
 }

@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/carousel/add', [HomeController::class, 'storeCarousel'])->name('carousel.store');
         Route::delete('/carousel/delete/{id}', [HomeController::class, 'destroy'])->name('carousel.destroy');
 
+        Route::get('/admin/users', [AdminController::class, 'getUsers'])->name('users.list');
+        Route::post('/user/{user}/role/{role}',[AdminController::class,'assignRole'])->name('user.role');
+
         Route::post('/send-mail', [AdminController::class, 'sendMail'])->name('send.mail');
     });
 });
@@ -56,7 +59,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 // Route::get('/domain',[Controller::class,'checkDomain']);
 
 
-Route::get('/user/{user}/role/{role}',[AdminController::class,'assignRole'])->name('user.role');
+
 
 
 
