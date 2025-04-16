@@ -7,6 +7,7 @@ use App\Models\Review;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Permission;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -38,10 +39,36 @@ class AdminController extends Controller
             'roles' => Role::all(),
         ]);
     }
-    public function assignPermission(User $user, Permission $permission)
+    public function assignPermission(Role $role, Permission $permission)
     {
-        $user->permissions()->sync($permission);
+        $role->permissions()->sync($permission);
 
         return redirect()->back()->with('success', 'Permission assigned successfully!');
+        // return response()->json([
+        //     'success' => 'success',
+        //     'message' => 'Permission assigned successfully!',
+        //     'role' => $role,
+        //     'permission' => $permission,
+
+        // ]);
+    }
+    public function updatePermission(Request $request)
+    {
+        $role = Role::findOrFail($request->role_id);
+        $permissions = $request->permissions ?? []; 
+    
+        $role->permissions()->sync($permissions);
+    
+        return redirect()->back()->with('success', 'Permissions updated successfully!');
+    }
+    
+
+
+    public function getPermission()
+    {
+        return view('admin.settings', [
+            'permissions' => Permission::all(),
+            'roles' => Role::all(),
+        ]);
     }
 }

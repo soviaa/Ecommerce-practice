@@ -47,12 +47,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/users', [AdminController::class, 'getUsers'])->name('users.list');
         Route::post('/user/{user}/role/{role}',[AdminController::class,'assignRole'])->name('user.role');
 
+        Route::post('/role/{role}/permission/{permission}',[AdminController::class,'assignPermission'])->name('role.permission');
+        Route::post('/roles/permissions/update', [AdminController::class, 'updatePermission'])->name('role.permission.update');
+
+        Route::get('/admin/settings',[AdminController::class,'getPermission'])->name('admin.settings');
+
         Route::post('/send-mail', [AdminController::class, 'sendMail'])->name('send.mail');
     });
 });
 
 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
 
 // Route::get('/palindrome/{number}',[Controller::class,'isPalindrome']);
 // Route::get('/length/{word}',[Controller::class,'length']);

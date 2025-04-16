@@ -45,6 +45,7 @@
                                 <th class="py-3 px-6 text-left">Name</th>
                                 <th class="py-3 px-6 text-left">Email</th>
                                 <th class="py-3 px-6 text-left">Role</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -66,8 +67,9 @@
                                                 @endforeach
                                             </select>
                                         </form>
-                                        {{-- {{ $user->roles->pluck('name')->join(', ') ?: 'No Role' }} --}}
+                                       
                                     </td>
+                                   
                                 </tr>
                             @endforeach
                         </tbody>
